@@ -1,0 +1,41 @@
+.form
+{
+	margin-top: 100px;
+	width: 800px;
+	background: #ddd;
+	position: relative;
+	width: 60%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.form h3
+{
+	text-align: center;
+}
+
+.form-group, button
+{
+	position: relative;
+	width:60%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.alert
+{
+margin-top:50px;
+}
+
+/*Forgotten Password*/
+.forget
+{
+	padding-top: 10px;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+}
+
