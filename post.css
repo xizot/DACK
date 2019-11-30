@@ -9,10 +9,9 @@
 	height: auto;
 	border-radius: 5px;
 }
-
-.col img
+.col .name img
 {
-	width: 400px;
+	width: 40px;
 	height: 40px;
 	margin-right: 10px;
 	border-radius: 50%;
