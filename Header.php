@@ -8,7 +8,7 @@ require_once 'Init.php';
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>1760057-1760131</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 	<style>
@@ -29,7 +29,7 @@ require_once 'Init.php';
 	<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="./">BTCN07</a>
+      <a class="navbar-brand" href="./">BTN01</a>
     </div>
     <ul class="nav navbar-nav">
       <li <?php echo $Path == 'index.php' ||  $Path == ''?'class="active"':'' ?> ><a href="index.php">Home</a></li>

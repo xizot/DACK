@@ -220,7 +220,7 @@ function AddStatus($email, $postStatus)
 function LoadStatus($email)
 {
 	global $db;
-	$stmt = $db->prepare("SELECT * FROM users u, Post p WHERE p.email = u.email and  u.email = ?");
+	$stmt = $db->prepare("SELECT * FROM users u, post p WHERE p.email = u.email and  u.email = ?");
 	$stmt->execute([$email]);
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		echo '<div class="col">';
