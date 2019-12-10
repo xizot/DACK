@@ -13,7 +13,6 @@ if(($_SERVER['REQUEST_METHOD'] == 'POST'))
 	$OlderPass = $_POST['olderpass'];
 	$NewPass = $_POST['newpass'];
 	$check = ChangePassword($_SESSION['email'],$OlderPass,$NewPass);
-	echo $check;
 }
 
 ?>
@@ -53,6 +52,10 @@ if(($_SERVER['REQUEST_METHOD'] == 'POST'))
 		<?php elseif(($_SERVER['REQUEST_METHOD'] == 'POST') && $check == -2): ?>
 			<div class="alert alert-danger" role="alert">
 			Sai mật khẩu. Vui lòng kiểm tra lại.
+			</div>
+        <?php elseif(($_SERVER['REQUEST_METHOD'] == 'POST') && $check == 1): ?>
+			<div class="alert alert-success" role="alert">
+			Đổi mật khẩu thành công.
 			</div>
 		<?php endif; ?>
 		</div>

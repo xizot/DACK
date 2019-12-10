@@ -1,0 +1,200 @@
+
+
+.box-post .form-group
+{
+	width: 100%;
+}
+.row{
+	margin-top: 34px;
+	position: relative;
+	width: 100%;
+}
+
+.row .header, .box-post
+{
+
+	width: 100%;
+	height: 100%;
+	padding-left: 100px;
+}
+
+.header
+{
+	position: relative;
+	width: 100%;
+	top: 0px;
+	/*background: red;*/
+}
+
+.info
+{
+	position: absolute;
+	top: 150px;
+	height: 160px;
+	width: 100%;
+}
+.name
+{
+	bottom: 20px;
+	left: 220px;
+	position: absolute;
+}
+
+.name p
+{
+	color: white;
+	font-size: 24px;
+}
+
+.header .wal-pic
+{
+	position: relative;
+	width: 100%;
+	height: 315px;
+	top: 0px;
+	background: #ddd;
+}
+
+
+.header .wal-pic img
+{
+	width: 100%;
+	height: 100%;
+}
+
+.header .info .avt 
+{	position: absolute;
+	width: 168px;
+	height:168px;
+	left: 20px;
+	bottom: -20px;
+}
+
+.header .avt img
+{
+	background: yellow;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	border: 4px solid white;
+	z-index: 99;
+}
+
+.profile-img img
+{  
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+}
+
+.header .menu
+{
+	top: 0px;
+	position: relative;
+	width: 100%;
+	height: 43px;
+	border: 1px solid #ddd;
+}
+.header .menu ul
+{
+	list-style: none;
+	float:right;
+}
+
+.header .menu ul li
+{
+	position: relative;
+	border-left: 1px solid #ddd;
+	float: left;
+	width: 200px;
+	height: 43px;
+	text-align: center;
+}
+.header .menu ul li a
+{
+
+	text-decoration: none;
+	color: #385898;
+	font-size: 16px;
+	width: 100%;
+	height: 100%;
+	line-height: 43px;
+
+}
+
+.header .menu ul li button
+{
+	width: 100%;
+	height: 42px;
+	background: #4267b2;
+	border-radius: 0;
+}
+.box-post h3
+{
+	margin-top: 50px;
+	color: red;
+}
+
+.col-md-10
+{
+	width: 100%;
+	height: 100%;
+}
+
+
+
+.box-post
+{
+	width: 100%;
+}
+
+.col-md-2
+{
+	right: -32px;
+	position: absolute;
+	border-left: 1px solid #ddd;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.col-md-2 .friends
+{
+	position: relative;
+	padding: 10px;
+	width: 100%;
+	float: left;
+}
+
+
+.col-md-2 .friends-name
+{
+	float: left;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 20px;
+	left: 56px;
+}
+.col-md-2 .friends-name p
+{
+	font-size: 12px;
+}
+.col-md-2 .friends img
+{
+	float: left;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+}
+
+#dropdownMenuButton
+{
+	background: #4267b2;
+	position: relative;
+	width: 100%;
+	height: 43px;
+}
+
