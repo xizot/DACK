@@ -1,19 +1,17 @@
 <?php 
-require_once 'init.php';
+//require_once 'init.php';
 require_once 'Header.php';
 require_once 'Function.php';
-
 
 if($_SERVER['REQUEST_METHOD'] == 'GET')
 {
 	$email = $_SESSION['email'];
 	$code =$_GET['code'];
 	$rs=Active($email,$code);
-	echo $rs;
 	if($rs == 1)
 	{
 		$_SESSION['status'] = 1;
-		header("Location:Index.php");
+		header("Location:index.php");
 	}
 }
 ?>
