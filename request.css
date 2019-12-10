@@ -1,0 +1,120 @@
+body
+{
+    width: 100%;
+    height: 100%;
+}
+
+.row
+{
+    position: relative;
+    margin-top: 34px;
+    width: 100%;
+}.col-md-10
+{
+	width: 100%;
+	height: 100%;
+}
+
+.box-request
+{
+	width: 100%;
+}
+.box-request .content 
+{
+    margin-top: 20px;
+    width: 100%;
+}
+.box-request .content .info img
+{
+    border: 2px solid white;
+    width: 75px;
+    height: 75px;
+}
+
+.col-md-2
+{
+	right: -32px;
+	position: absolute;
+	border-left: 1px solid #ddd;
+	width: 100%;
+
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.col-md-2 .friends
+{
+	position: relative;
+	padding: 10px;
+	width: 100%;
+	float: left;
+}
+
+
+.col-md-2 .friends-name
+{
+	float: left;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 20px;
+	left: 56px;
+}
+.col-md-2 .friends-name p
+{
+	font-size: 12px;
+}
+.col-md-2 .friends img
+{
+	float: left;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+}
+
+.content
+{
+
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin: 20px;
+    text-align: center;
+}
+
+.info
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ddd;
+}
+.content .info .name
+{
+    font-weight: bold;
+}
+.content .info a
+{
+    text-decoration: none;
+    position: relative;
+    line-height: 100px;
+ 
+}
+.accept
+{
+    margin-left: 40px;
+    position: relative;
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+    background: #4267b2;
+    color: white;
+}
+.delete
+{
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+    background: #f5f6f7;
+    color: black;
+}

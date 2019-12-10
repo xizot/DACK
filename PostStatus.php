@@ -2,11 +2,6 @@
 <?php
 require_once 'Header.php';
 require_once 'Function.php';
-if($_SESSION['email'] =="")
-{
-	header("Location:login.php");
-}
-
 
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
@@ -26,7 +21,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 	<meta charset="UTF-8">
 	<title>Post Status Page</title>
 	<link rel="stylesheet" href="post.css">
-		
 </head>
 <body>
 	<div class="container">
