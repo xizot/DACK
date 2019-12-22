@@ -1,14 +1,15 @@
 <?php 
-require_once 'Header.php';
+require_once 'Init.php';
 require_once 'Function.php';
+require_once 'navbar.php';
 
 if($_SESSION['email'] !="" && $_SESSION['status'] == 1)
 {
-	header("Location:login.php");
+	header("Location:Login.php");
 }
 if($_SESSION['email'] =="")
 {
-	header("Location:login.php");
+	header("Location:Login.php");
 }
 
 	$check = -5;
@@ -35,12 +36,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Login Page</title>
-	<link rel="stylesheet" href="./css.css">
+	<title>RESET PASSWORD</title>
+	<link rel="stylesheet" href="./style/login.css">
+	<link class="pgcss" rel="stylesheet" href="./pageloading.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js.js"></script>
 </head>
 <body>
 	<div class="container">
-		<div class="form">
+		<div class="login-form">
 		<form action="" method="POST" role="form">
 		<h3>Reset password</h3>
 			<div class="form-group">

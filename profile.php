@@ -17,9 +17,9 @@ if (!empty($id)) {
     !empty($data['fullname']) ? $fullname = $data['fullname'] : $fullname = "New Member";
     !empty($data['avt']) ? $avt = "./avt.php/?id=" . $id . "&for=avt" : $avt = "1.jpg";
     !empty($data['walpic']) ? $walpic = "./avt.php/?id=" . $id . "&for=wal" : $walpic = "2.jpg";
-    !empty($data['Tel']) ? $tel = substr($data['Tel'],0,5)."xxxxxx": $tel = "Chưa cập nhật";
-    !empty($data['DOB']) ? $dob = substr($data['DOB'],0,4)."/xx/xx": $dob = "Chưa cập nhật";
-    $email = substr($_SESSION['email'],0,6).".xxxxx".substr($_SESSION['email'],strlen($_SESSION['email'])-4,strlen($_SESSION['email'])-2);
+    !empty($data['Tel']) ? $tel = substr($data['Tel'], 0, 5) . "xxxxxx" : $tel = "Chưa cập nhật";
+    !empty($data['DOB']) ? $dob = substr($data['DOB'], 0, 4) . "/xx/xx" : $dob = "Chưa cập nhật";
+    $email = substr($_SESSION['email'], 0, 6) . ".xxxxx" . substr($_SESSION['email'], strlen($_SESSION['email']) - 4, strlen($_SESSION['email']) - 2);
 }
 
 
@@ -38,7 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $Image = ConvertIMG($_FILES['image']);
         }
 
-        AddStatus($_SESSION['id'], $_SESSION['email'], $_POST['status'], $Image);
+        if ($_POST['status'] != "" || $Image != "") {
+            AddStatus($_SESSION['id'], $_SESSION['email'], $_POST['status'], $Image);
+        }
     }
 }
 
@@ -62,12 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"> -->
     <link class="pgcss" rel="stylesheet" href="./pageloading.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./js.js"></script>
+    <script src="./loading.js"></script>
 </head>
 
 <body>
-<svg class ='svg'><rect></rect></svg>
+    <svg class='svg'>
+        <rect></rect>
+    </svg>
     <div class="profile">
         <?php if (empty($data)) : ?>
             <div class="error">
@@ -141,7 +147,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <i class="fas fa-user-check">Friend</i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="<?php echo "./profile.php?id=" . $_SESSION['id'] ?>">Unfollow</a>
+                                        <?php if (!isFollow2($_SESSION['id'], $id)) : ?>
+                                            <a class="dropdown-item" href="<?php echo "./unfollow.php?fromID=" . $_SESSION['id'] . "&toID=" . $id . "&for=follow" ?>">Follow</a>
+                                        <?php elseif (isFollow2($_SESSION['id'], $id)) : ?>
+                                            <a class="dropdown-item" href="<?php echo "./unfollow.php?fromID=" . $_SESSION['id'] . "&toID=" . $id . "&for=unfollow" ?>">Unfollow</a>
+                                        <?php endif; ?>
+
                                         <a class="dropdown-item" href="<?php echo "./removefriends.php?from=" . $_SESSION['id'] . "&to=" . $id ?>">Unfriend</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Something else here</a>
@@ -161,7 +172,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
 
-                <div class="box-form-post">
+
+
+
+                <div class="box-form-post" style="width: 80%">
 
                     <form action="" method="POST" role="form" enctype="multipart/form-data">
                         <legend>CREATE POST</legend>
@@ -187,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
 
 
-                <div class="box-status" style="width: 100%">
+                <div class="box-status" style="width: 80%">
                     <?php if (empty($postID)) : ?>
                         <?php require_once 'post.php'; ?>
                     <?php elseif (!empty($p)) :
@@ -199,7 +213,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $postPrivacy = $p['privacy'];
                         $img = "./avt.php?id=" . $postID . "&for=post"
 
-                        ?>
+                    ?>
                         <div class="box-status-content">
 
                             <div class="box-status-edit" id="<?php echo $postID ?>">
@@ -209,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </div>
 
                                 <div class="dropdown" id="delete">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-ellipsis-h"></i>
                                     </a>
                                     <div style="height: 60px;border-radius:5px" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -268,8 +282,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <nav aria-label="...">
                             <ul class="pagination">
                                 <?php
-                                    $numpage = countPage($id, 5, 'profile');
-                                    for ($i = 1; $i <= $numpage; $i++) : ?>
+                                $numpage = countPage($id, 5, 'profile');
+                                for ($i = 1; $i <= $numpage; $i++) : ?>
 
                                     <?php if ($i == 1) : ?>
                                         <li class="page-item active" id="<?php echo "page" . $i; ?>" style="cursor:pointer">
@@ -287,13 +301,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div class="col-md-2">
-                <h4><i class="fas fa-address-card"></i> About</h4>
-                <a href="<?php echo "./profile.php?id=".$id;  ?> " style="position:relative; text-transform:uppercase;padding-left:20px;color:white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue"> <?php echo $fullname ?></a><br>
-                <i style="position:relative;margin: 30px 0px 0px 20px" class="fas fa-mobile-alt"> <?php echo $tel ?></i><br>
-                <i style="position:relative;margin:5px 0px 0px 20px" class="fas fa-envelope"> <?php echo $email ?></i><br>
-                <i style="position:relative;margin:5px 0px 0px 20px" class="fas fa-birthday-cake"> <?php echo $dob ?></i><br>
+                <div class="About">
+                    <h4><i class="fas fa-address-card"></i> About</h4>
+                    <i class="fas fa-mobile-alt"> <?php echo $tel ?></i><br>
+                    <i class="fas fa-envelope"> <?php echo $email ?></i><br>
+                    <i class="fas fa-birthday-cake"> <?php echo $dob ?></i><br>
+                </div>
                 <h4 style="position:relative; margin-top:30px"><i class="fas fa-users"></i>Friends</h4>
-                    <?php require_once 'friend.php' ?>
+                <?php require_once 'friend.php' ?>
             </div>
         </div>
 

@@ -6,7 +6,17 @@ $from = $_GET['from'];
 $to = $_GET['to'];
 
 removeFriends($from,$to);
-header("Location:profile.php?id=".$to);
 
+
+$for = $_GET['for'];
+
+if($for == 'req')
+{
+    header("Location:Request.php");
+}
+else
+{
+    header("Location:profile.php?id=".$to);
+}
 
 ?>

@@ -27,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" id="nav">
-        <a class="navbar-brand" href="./profile.php?id=<?php echo $_SESSION['id'] ?>">X I Z O T</a>
+    
+        <a class="navbar-brand" href="<?php echo $_SESSION['id']!=null?"./profile.php?id=".$_SESSION['id'] :"./Login.php" ?>">X I Z O T</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
