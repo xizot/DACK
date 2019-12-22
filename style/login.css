@@ -1,0 +1,59 @@
+
+.login-form
+{
+	margin-top: 200px;
+	background: #ddd;
+	position: relative;
+	width: 60%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.login-form h3
+{
+	text-align: center;
+}
+
+.login-form .form-group
+{
+	position: relative;
+	width:60%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.login-form button
+{
+	position: relative;
+	width:60%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.alert
+{
+margin-top:50px;
+}
+
+/*Forgotten Password*/
+.forget
+{
+	padding-top: 10px;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	
+}
+.forget p{
+	margin-top: 20px;
+}
+
+@media (max-width: 576px)
+{
+    .login-form
+    {
+        width: 100%;
+    }
+}

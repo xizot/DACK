@@ -1,0 +1,33 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.row    
+{
+    width: 100%;
+}
+
+.profile .col-sm-10
+{
+    position: absolute;
+}
+.profile .col-sm-2
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: yellow;
+
+}
+
+.info
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:red;
+}

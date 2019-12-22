@@ -1,0 +1,34 @@
+*
+{
+    padding: 0;
+    margin: 0; 
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.box-friend-content
+{
+
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px; 
+}
+.box-friend-content img
+{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.box-friend-content .friend-name
+{
+    padding-left: 10px;
+    line-height: 50px;
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+}

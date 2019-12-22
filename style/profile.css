@@ -1,0 +1,226 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+.container-fluid .row
+{
+    width: 100%;
+    height: 100%;
+}
+.container-fluid
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+    align-content: center;
+}
+
+.container-fluid .box-status
+{  
+     margin-top: 75px;
+    position: relative;
+    width: 80%;
+    height:auto;
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+.box-status-content
+{
+    /* padding: 20px; */
+    position: relative;
+    width: 80%;
+    height: auto;
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+.box-status-content .avt
+{
+    position: relative;
+    width: 52px;
+    height: 52px;
+    float: left;
+}
+
+
+.box-status-content .avt img
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.box-status-content .name
+{
+    padding-left: 10px;
+    line-height: 52px;
+}
+
+.box-status .box-status-content .imgPost
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.box-status .box-status-content .imgPost img
+{
+
+    width: 100%;
+    height: 100%;
+}
+
+.box-status .box-status-content .status
+{
+    font-size:20px;
+}
+
+
+.box-status .box-status-content .react-info
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.box-status .box-status-content .react .react-info a
+{
+  
+}
+.box-status .box-status-content .react-button
+{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid lightblue;
+    border-bottom: 1px solid lightblue;
+}
+
+.box-status .box-status-content .react-button button
+{
+    position: relative;
+    width: 33%;
+    border: none;
+    background: white;
+}
+
+.box-status .box-status-content .react-button button:hover
+{
+    background: #cecfd1;
+    border-radius: 10px;
+}
+
+.box-status .box-status-content  .react-comment
+{
+    width: 100%;
+}
+
+.box-status .box-status-content  .react-comment input
+{
+    position: relative;
+    width: 100%;
+}
+
+.box-status .box-status-content .react-comment
+{
+    position: relative;
+    width: 100%;
+    min-height: 100px;  
+    padding: 10px;
+}
+.react-comment-info
+{
+    position: relative;
+    display: flex;
+}
+
+
+
+.react-comment-avt
+{
+    position: relative;
+    width: 42px;
+    height: 42px;
+}
+.react-comment-avt img
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.react-comment-name
+{
+    line-height: 42px;
+    padding-left: 5px;  
+} 
+
+.react-write-comment
+{
+    margin-top: 10px;
+    position: relative;
+    display:flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.react-write-comment .react-write-comment-avt
+{
+    position: relative;
+    width: 42px;
+    height: 42px;
+}
+.react-write-comment .react-write-comment-avt img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.react-write-comment input
+{
+    position: relative;
+    width: 92%;
+    border-radius: 20px;
+}
+
+.react-commented
+{
+    margin-top: 20px;
+}
+
+.container-fluid .row
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* .col-sm-2
+{
+    width: 100%;
+    height: 100%;
+    background: green;
+    border: 1px solid red;
+} */
+
+.react-comment-txt
+{
+    font-size: 14px;
+}
