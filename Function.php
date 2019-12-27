@@ -11,33 +11,43 @@ require 'phpmailer/vendor/autoload.php';
 
 // Instantiation and passing `true` enables exceptions
 //SendEmail('test.160499@gmail.com','nvnhat.17ck1@gmail.com','Hau','Hello','Active your account');
-
-function SendMessageNotify($msgID,$from,$to)
+function addMessageNotification($from,$id)
 {
-	$sql = " INSERT INTO messagesnotify(msgID,user1,user2) VALUES(?,?,?)";
+	$sql = " INSERT INTO notify(postID,userID,byID,type) VALUES(0,?,?,2)";
 	global $db;
 	$stmt = $db->prepare($sql);
-	$stmt->execute([$msgID, $from, $to]);
+	$stmt->execute([$id,$from]);
 }
-// function SeenMessageNotify($msgID,$from,$to)
-// {
-// 	$sql = " INSERT INTO notify(postID,userID,byID,type) VALUES(?,?,?,?)";
-// 	global $db;
-// 	$stmt = $db->prepare($sql);
-// 	$stmt->execute([$postID, $to, $from, $type]);
-// }
+
+function removeAllMessageNotify($id)
+{
+	$sql = "DELETE FROM notify where userID = ? and type = 2";
+	global $db;
+	$stmt = $db->prepare($sql);
+	$stmt->execute([$id]);
+}
+
+function countMessageNotify($id)
+{
+	$sql = "SELECT * FROM notify WHERE userID = ? and type = 2";
+	global $db;
+	$stmt = $db->prepare($sql);
+	$stmt->execute([$id]);
+	$data = $stmt->fetchAll();
+	return count($data);
+}
 
 function deleteAllMessage($fromId, $toID)
 {
 	$sql = 	"Update messages set deleteby = ? WHERE ((user_1 = ? and user_2 = ?) or(user_1 = ? and user_2 = ?)) and deleteBy = 0";
 	global $db;
 	$stmt = $db->prepare($sql);
-	$stmt->execute([$fromId, $fromId, $toID,$toID,$fromId]);
+	$stmt->execute([$fromId, $fromId, $toID, $toID, $fromId]);
 
 
 	$sql_Delete = "DELETE FROM messages where ((user_1 = ? and user_2 = ?) or(user_1 = ? and user_2 = ?)) and deleteBy = ?";
 	$stmt = $db->prepare($sql_Delete);
-	$stmt->execute([$fromId, $toID,$toID,$fromId, $toID]);
+	$stmt->execute([$fromId, $toID, $toID, $fromId, $toID]);
 }
 
 
@@ -158,13 +168,13 @@ function GetAllMessage($from)
 	$sql = "SELECT user_2,id FROM `messages` WHERE user_1 =? and deleteBy != ?  group by user_2,id order by createAt DESC";
 	global $db;
 	$stmt = $db->prepare($sql);
-	$stmt->execute([$from,$from]);
+	$stmt->execute([$from, $from]);
 	$data1 = $stmt->fetchAll();
 
 
 	$sql = "SELECT user_1,id FROM `messages` WHERE user_2 =? and deleteBy != ? group by user_1,id order by createAt DESC";
 	$stmt = $db->prepare($sql);
-	$stmt->execute([$from,$from]);
+	$stmt->execute([$from, $from]);
 	$data2 = $stmt->fetchAll();
 
 	$rs = array();
@@ -269,6 +279,9 @@ function LoadAllFriendPost($id, $limit, $pagenum)
 	$stmt = $db->prepare($sql);
 	$stmt->execute([$id]);
 	$data = $stmt->fetchAll();
+	if (count($data) <= 0) {
+		$data = GetPostByCreateID($id);
+	}
 	return $data;
 }
 
@@ -422,7 +435,6 @@ function unFollow($id1, $id2)
 	$stmt = $db->prepare($sql);
 	$stmt->execute([$id1, $id2]);
 	$data = $stmt->fetchAll();
-
 }
 function Follow($id1, $id2)
 {
@@ -431,7 +443,6 @@ function Follow($id1, $id2)
 	$stmt = $db->prepare($sql);
 	$stmt->execute([$id1, $id2]);
 	$data = $stmt->fetchAll();
-
 }
 function isFriend($id1, $id2)
 {
@@ -562,7 +573,11 @@ function GetPostByCreateIDPagination($id, $limit, $pagenum)
 
 	$sql = "select * from post where createAt = ? order by postTime DESC LIMIT " . $limit . " OFFSET " . $limit * ($pagenum - 1);
 	if ($_SESSION['id'] != $id) {
-		$sql = "select * from post where createAt = ? and privacy != 0 order by postTime DESC LIMIT " . $limit . " OFFSET " . $limit * ($pagenum - 1);
+		$sessID = $_SESSION['id'];
+		if (isFriend($sessID, $id))
+			$sql = "select * from post where createAt = ? and privacy != 0 order by postTime DESC LIMIT " . $limit . " OFFSET " . $limit * ($pagenum - 1);
+		else
+			$sql = "select * from post where createAt = ? and privacy = 2 order by postTime DESC LIMIT " . $limit . " OFFSET " . $limit * ($pagenum - 1);
 	}
 
 
@@ -704,7 +719,7 @@ function Register($email, $password) #Đăng Kí
 	$stmt = $db->prepare("INSERT INTO users(email,password,code,status) VALUES(?,?,?,?)");
 	$stmt->execute([$email, $password, $code, '0']);
 
-	SendEmail('test.160499@gmail.com', $email, 'new member', 'http://1760131.rf.gd/BTN03/active.php?code=' . $code, 'Active your account');
+	SendEmail('test.160499@gmail.com', $email, 'new member', 'http://1760131.rf.gd/BTN03/Active.php?code=' . $code, 'Active your account');
 
 	return 1;
 }
@@ -831,6 +846,3 @@ function LoadStatus($email)
 		echo '</div>';
 	}
 }
-
-
-
