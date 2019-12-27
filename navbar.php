@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" id="nav">
-    
-        <a class="navbar-brand" href="<?php echo $_SESSION['id']!=null?"./profile.php?id=".$_SESSION['id'] :"./Login.php" ?>">X I Z O T</a>
+
+        <a class="navbar-brand" href="<?php echo $_SESSION['id'] != null ? "./profile.php?id=" . $_SESSION['id'] : "./Login.php" ?>">X I Z O T</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <?php elseif ($_SESSION['email'] != "") : ?>
 
-
+                    <!-- SỐ LỜI MỜI KẾT BẠN -->
                     <li class="nav-item" id="dropdown">
                         <a class="nav-link" href="./index.php"><i class="fas fa-home"> HOME</i></a>
                     </li>
@@ -74,10 +74,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <span class="num"><?php echo countRequestFriends($_SESSION['id']) ?></span>
                             </i></a>
                     </li>
+
+                    <!-- TIN NHẮN -->
                     <li class="nav-item" id="dropdown">
-                        <a class="nav-link" href="./message.php"><i class="fas fa-envelope"></i></a>
+                        <!-- <p><?php echo countMessageNotify($_SESSION['id']) ?>hihi</p> -->
+                        <a class="nav-link" href="./message.php"><i class="fas fa-envelope">
+                                <span class="fa fa-comment"></span>
+                                <span class="num"><?php echo countMessageNotify($_SESSION['id']) ?></span>
+                            </i></a>
+
                     </li>
 
+                    <!-- THÔNG BÁO TƯƠNG TÁC -->
                     <li class="nav-item dropdown" id="dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell">
@@ -85,16 +93,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <span class="num"><?php echo countNotifications($_SESSION['id']) ?></span>
                             </i>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="navdrop" style="width:200px">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="navdrop" style="width:200px; min-height:150px">
 
                             <?php $notify = getNotifications($_SESSION['id']);
-                                foreach ($notify as $noti) :
-                                    $notiInfo = GetProfileByID($noti['byID']);
-                                    $notiName = $notiInfo['fullname'];
-                                    $notiAvt = "./avt.php?id=" . $noti['byID'] . "&for=avt";
-                                    $notiType = $noti['type'];
+                            foreach ($notify as $noti) :
+                                $notiInfo = GetProfileByID($noti['byID']);
+                                $notiName = $notiInfo['fullname'];
+                                $notiAvt = "./avt.php?id=" . $noti['byID'] . "&for=avt";
+                                $notiType = $noti['type'];
 
-                                    ?>
+                            ?>
+
+                                <!-- THÔNG BÁO LIKE -->
                                 <?php if ($noti['type'] == 0) : ?>
                                     <?php if ($noti['seen'] == 0) : ?>
                                         <a class="dropdown-item" href="" style="position:relative; background: yellow;height:30px; margin-top:10px">
@@ -107,6 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <a style="position:absolute; font-size:12px; margin-top:-25px; padding-left:60px" onclick="seenNotiFy(<?php echo $noti['byID'] ?>,<?php echo $noti['postID'] ?>,<?php echo $notiType ?>)" href="./profile.php?id=<?php echo $_SESSION['id'] . "&postID=" . $noti['postID'] ?>"> Like your post</a>
                                         </a>
                                     <?php endif; ?>
+
+                                    <!-- THÔNG BÁO COMMENT -->
                                 <?php elseif ($noti['type'] == 1) : ?>
                                     <?php if ($noti['seen'] == 0) : ?>
                                         <a class="dropdown-item" href="" style="position:relative; background: yellow;height:30px; margin-top:10px">
@@ -121,8 +133,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <?php endif; ?>
 
                                 <?php endif; ?>
+                                <hr>
                             <?php endforeach; ?>
                     </li>
+                    <!-- OPTION -->
                     <li class="nav-item dropdown" id="dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-ninja"></i>
@@ -133,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <a class="dropdown-item" href="./UpdateProfile.php?id=<?php echo $_SESSION['id'] ?>">Update information</a>
                             <a class="dropdown-item" href="./search.php">Find friends</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="./Logout.php">Logout</a>
                         </div>
                     </li>
 

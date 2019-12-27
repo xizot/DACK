@@ -8,7 +8,7 @@ if (empty($_SESSION['id'])) {
     header("Location:Login.php");
 }
 
-
+removeAllMessageNotify($_SESSION['id']);
 $tofrID = $_GET['toID'];
 $fromID = $_SESSION['id'];
 $fromInfo = GetProfileByID($fromID)[0];
@@ -44,9 +44,6 @@ if (!empty($tofrID)) {
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./js.js"></script>
-    <link class="pgcss" rel="stylesheet" href="./pageloading.css">
-	<script src="./loading.js"></script>
-
 <body>
 
 

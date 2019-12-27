@@ -4,6 +4,10 @@ require_once 'Init.php';
 require_once 'Function.php';
 require_once 'navbar.php';
 
+if(empty($_SESSION['id']))
+{
+	header("Location:./Login.php");
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (isset($_POST['status']) && isset($_FILES['image'])) {
@@ -99,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</div>
 		<?php endif; ?>
 		</div>
-		<footer style="position:relative;padding:50px;margin-top:100vh;background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(0,93,133,1) 0%, rgba(0,181,149,1) 90% );">
+		<footer style="position:relative;padding:50px;margin-top:70vh;background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(0,93,133,1) 0%, rgba(0,181,149,1) 90% );">
 
 			<?php require_once 'footer.php' ?>
 		</footer>
