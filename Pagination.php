@@ -70,8 +70,8 @@ if (!empty($id)) {
 
                 <div class="box-status-edit" id="<?php echo $postID ?>">
                     <div class="edit-info">
-                        <a href="" class="avt"><img src="<?php echo $avt ?>" alt=""></a>
-                        <a href="" class="name"><?php echo $fullname ?></a>
+                        <a href="<?php echo "./profile.php?id=".$p['createAt'] ?>" class="avt"><img src="<?php echo $avt ?>" alt=""></a>
+                        <a href="<?php echo "./profile.php?id=".$p['createAt'] ?>" class="name"><?php echo $fullname ?></a>
                     </div>
                 <?php if ($_SESSION['id'] == $eachID) : ?>
                     <div class="dropdown" id="delete">

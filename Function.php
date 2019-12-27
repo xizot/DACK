@@ -719,7 +719,7 @@ function Register($email, $password) #Đăng Kí
 	$stmt = $db->prepare("INSERT INTO users(email,password,code,status) VALUES(?,?,?,?)");
 	$stmt->execute([$email, $password, $code, '0']);
 
-	SendEmail('test.160499@gmail.com', $email, 'new member', 'http://1760131.rf.gd/BTN03/Active.php?code=' . $code, 'Active your account');
+	SendEmail('test.160499@gmail.com', $email, 'new member', 'http://1760131.rf.gd/DACK/Active.php?code=' . $code, 'Active your account');
 
 	return 1;
 }
@@ -736,7 +736,7 @@ function Forget($email)
 	if (count($data) <= 0) {
 		return -1;
 	}
-	SendEmail('test.160499@gmail.com', $email, 'Member', 'http://1760131.rf.gd/BTN03/ResetPassword.php?', 'Reset your account');
+	SendEmail('test.160499@gmail.com', $email, 'Member', 'http://1760131.rf.gd/DACK/ResetPassword.php?', 'Reset your account');
 	return 1;
 }
 

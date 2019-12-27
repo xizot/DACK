@@ -21,7 +21,7 @@ else
 
     echo $toEmail;
 
-    SendEmail('test.160499@gmail.com', $toEmail, $toName,'Bạn nhận được lời mời kết bạn từ <a href ="http://localhost:8080/daCK_v2/DACK/profile.php?id='.$from.'">'.$fromName.'</a>' , 'Lời mời kết bạn mới');
+    SendEmail('test.160499@gmail.com', $toEmail, $toName,'Bạn nhận được lời mời kết bạn từ <a href ="http://1760131.rf.gd/DACK/profile.php?id='.$from.'">'.$fromName.'</a>' , 'Lời mời kết bạn mới');
 
     header("Location:profile.php?id=".$to);
 }

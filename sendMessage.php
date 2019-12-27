@@ -26,7 +26,7 @@ $toName = $toInFo['fullname'];
 
 echo $toEmail;
 
-SendEmail('test.160499@gmail.com', $toEmail, $toName,'Bạn nhận được tin nhắn mới từ <a href ="http://localhost:8080/daCK_v2/DACK/message.php?toID='.$from.'">'.$fromName.'</a>: '.$content , 'Tin nhắn mới');
+SendEmail('test.160499@gmail.com', $toEmail, $toName,'Bạn nhận được tin nhắn mới từ <a href ="http://1760131.rf.gd/DACK/message.php?toID='.$from.'">'.$fromName.'</a>: '.$content , 'Tin nhắn mới');
 
 
 ?>
